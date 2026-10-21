@@ -1,434 +1,321 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071329">
+<meta name="description" content="FREE INCOME Dashboard">
+<title>FREE INCOME | Dashboard</title>
 
-  <meta name="theme-color" content="#07133d">
-  <meta name="description" content="FREE INCOME Dashboard">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#071329;--panel:#101f3b;--gold:#f5c76b;--muted:#a7b4ce}
+body{
+  font-family:Arial,sans-serif;
+  background:radial-gradient(circle at top right,#173568 0,transparent 35%),var(--bg);
+  color:#fff;min-height:100vh
+}
+header{
+  padding:18px 5%;border-bottom:1px solid #243453;
+  background:rgba(7,19,41,.94);position:sticky;top:0;z-index:10
+}
+.topbar{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:48px;height:48px;border-radius:15px;
+  display:grid;place-items:center;background:linear-gradient(135deg,#f8dc93,#d69a32);
+  color:#071329;font-size:23px;font-weight:900
+}
+.brand h1{font-size:21px;letter-spacing:1px}
+.brand p{font-size:11px;color:var(--muted);margin-top:5px}
+button{cursor:pointer;font-weight:bold}
+.logout{
+  padding:11px 16px;border:1px solid #43516d;border-radius:11px;
+  background:#182945;color:#fff
+}
+main{max-width:1200px;width:92%;margin:28px auto 45px}
+.hero{
+  padding:32px;border-radius:24px;
+  background:linear-gradient(120deg,#142b50,#1b3761 65%,#3b2d4d);
+  border:1px solid #34496b;margin-bottom:22px
+}
+.eyebrow{color:var(--gold);font-size:12px;letter-spacing:2px;font-weight:bold}
+.hero h2{font-size:clamp(25px,4vw,36px);margin:13px 0}
+.hero p{color:#c4cfe2;line-height:1.7}
+.email{
+  display:inline-block;margin-top:16px;padding:9px 12px;
+  background:#ffffff12;border:1px solid #ffffff20;border-radius:9px;
+  font-size:13px;overflow-wrap:anywhere
+}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}
+.stat,.card{
+  background:linear-gradient(145deg,#122340,#0d1b33);
+  border:1px solid #263957;border-radius:19px;padding:21px
+}
+.stat-icon{font-size:23px;margin-bottom:17px}
+.stat h3{font-size:25px;color:var(--gold);margin-bottom:8px;overflow-wrap:anywhere}
+.stat p{font-size:12px;color:var(--muted)}
+.layout{display:grid;grid-template-columns:1.7fr 1fr;gap:20px}
+.card{margin-bottom:20px}
+.card-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px}
+.card-title h3{font-size:17px}
+.card-title span{font-size:11px;color:var(--muted)}
+.balance{background:linear-gradient(135deg,#162c4c,#14203c)}
+.balance .amount{font-size:clamp(28px,4vw,39px);font-weight:bold;color:var(--gold);margin:14px 0}
+.note{font-size:12px;color:var(--muted);line-height:1.6}
+.work{
+  display:flex;align-items:center;gap:13px;padding:15px 0;
+  border-bottom:1px solid #263957
+}
+.work:last-child{border:0}
+.work-icon{font-size:22px;background:#1c3151;border-radius:12px;padding:12px}
+.work-info{flex:1}
+.work-info h4{font-size:14px;margin-bottom:5px}
+.work-info p{font-size:12px;color:var(--muted);line-height:1.5}
+.tag{font-size:10px;color:var(--gold);background:#4c3e253d;padding:7px 9px;border-radius:20px}
+.profile{display:flex;align-items:center;gap:13px}
+.avatar{
+  width:53px;height:53px;border-radius:17px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#f5d78d,#bb8730);color:#101b30;font-size:22px;font-weight:bold
+}
+.profile h4{margin-bottom:6px;overflow-wrap:anywhere}
+.profile p{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.menu{display:grid;gap:10px}
+.menu button{
+  padding:14px;border-radius:12px;border:1px solid #293b59;
+  background:#142541;color:white;text-align:left;font-size:13px
+}
+.menu button:hover{border-color:var(--gold);background:#1a2d4b}
+.notice{padding:12px 0;border-bottom:1px solid #263957;font-size:13px;line-height:1.6;color:#d2dced}
+.notice:last-child{border:0}
+#message{font-size:12px;color:#ffb2b2;margin-top:12px;overflow-wrap:anywhere}
+footer{text-align:center;padding:20px;color:#8291ad;font-size:12px;border-top:1px solid #1d2d49}
+@media(max-width:900px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .layout{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  header{padding:13px 4%}
+  .brand h1{font-size:17px}
+  .brand p{font-size:10px}
+  .logo{width:40px;height:40px}
+  .logout{padding:9px;font-size:12px}
+  main{width:92%;margin-top:18px}
+  .hero{padding:23px 19px}
+  .stat,.card{padding:17px}
+  .stat h3{font-size:21px}
+}
+</style>
+</head>
 
-  <title>FREE INCOME | Dashboard</title>
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">FI</div>
+      <div>
+        <h1>FREE INCOME</h1>
+        <p>YOUR FUTURE STARTS HERE</p>
+      </div>
+    </div>
+    <button class="logout" id="topLogout">↗ Log Out</button>
+  </div>
+</header>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">MEMBER DASHBOARD</div>
+      <h2>Welcome Back! 👋</h2>
+      <p>তোমার FREE INCOME ড্যাশবোর্ডে স্বাগতম। নতুন দক্ষতা শেখো, কাজের সুযোগ খোঁজো এবং নিজের অগ্রগতি দেখো।</p>
+      <div class="email" id="userEmail">অ্যাকাউন্ট যাচাই করা হচ্ছে...</div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-icon">💰</div>
+      <h3>৳0.00</h3>
+      <p>Total Earnings</p>
+    </div>
+    <div class="stat">
+      <div class="stat-icon">💳</div>
+      <h3>৳0.00</h3>
+      <p>Available Balance</p>
+    </div>
+    <div class="stat">
+      <div class="stat-icon">📋</div>
+      <h3>0</h3>
+      <p>Completed Tasks</p>
+    </div>
+    <div class="stat">
+      <div class="stat-icon">🎯</div>
+      <h3>Active</h3>
+      <p>Account Status</p>
+    </div>
+  </section>
+
+  <section class="layout">
+    <div>
+      <div class="card balance">
+        <div class="card-title">
+          <h3>💎 Income Overview</h3>
+          <span>MY ACCOUNT</span>
+        </div>
+        <p class="note">তোমার বর্তমান ব্যালেন্স</p>
+        <div class="amount">৳0.00</div>
+        <p class="note">আসল আয়ের তথ্য যুক্ত না করা পর্যন্ত এখানে ডেমো ব্যালেন্স দেখানো হচ্ছে।</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <h3>🚀 Explore Opportunities</h3>
+          <span>GET STARTED</span>
+        </div>
+        <div class="work">
+          <div class="work-icon">🎨</div>
+          <div class="work-info">
+            <h4>Graphic Design</h4>
+            <p>ডিজাইন শেখো এবং নিজের পোর্টফোলিও তৈরি করো।</p>
+          </div>
+          <span class="tag">LEARN</span>
+        </div>
+        <div class="work">
+          <div class="work-icon">💻</div>
+          <div class="work-info">
+            <h4>Web Design</h4>
+            <p>ওয়েবসাইট তৈরি করার দক্ষতা অর্জন করো।</p>
+          </div>
+          <span class="tag">LEARN</span>
+        </div>
+        <div class="work">
+          <div class="work-icon">📚</div>
+          <div class="work-info">
+            <h4>Skill Development</h4>
+            <p>নতুন দক্ষতা শেখার মাধ্যমে এগিয়ে যাও।</p>
+          </div>
+          <span class="tag">EXPLORE</span>
+        </div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card">
+        <div class="card-title"><h3>👤 My Profile</h3></div>
+        <div class="profile">
+          <div class="avatar" id="avatar">U</div>
+          <div>
+            <h4 id="userName">Member</h4>
+            <p id="profileEmail">লোড হচ্ছে...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><h3>⚡ Quick Menu</h3></div>
+        <div class="menu">
+          <button type="button" data-message="তোমার প্রোফাইল Supabase অ্যাকাউন্টের সঙ্গে যুক্ত।">👤 My Profile</button>
+          <button type="button" data-message="লেনদেনের প্রকৃত তথ্য যুক্ত হলে এখানে দেখানো যাবে।">💳 Transaction History</button>
+          <button type="button" data-message="সাপোর্ট ফিচারটি পরবর্তী ধাপে যুক্ত করা যাবে।">🎧 Help & Support</button>
+          <button type="button" data-message="FREE INCOME-এর আপডেট এখানে দেখানো হবে।">🔔 Notifications</button>
+        </div>
+        <p id="message" role="status"></p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><h3>🔔 Latest Updates</h3></div>
+        <div class="notice">✨ তোমার ড্যাশবোর্ডে স্বাগতম!</div>
+        <div class="notice">📘 দক্ষতা শেখা চালিয়ে যাও।</div>
+        <div class="notice">🔐 নিজের অ্যাকাউন্টের তথ্য নিরাপদ রাখো।</div>
+      </div>
+
+      <div class="card">
+        <button class="logout" id="sideLogout" style="width:100%">↗ Log Out</button>
+      </div>
+    </aside>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> FREE INCOME. All rights reserved.</footer>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+/* তোমার আগের Supabase URL এবং publishable key এখানে বসাও */
+const SUPABASE_URL = "YOUR_SUPABASE_URL";
+const SUPABASE_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
+
+const emailBox = document.getElementById("userEmail");
+const profileEmail = document.getElementById("profileEmail");
+const userName = document.getElementById("userName");
+const avatar = document.getElementById("avatar");
+const message = document.getElementById("message");
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+document.querySelectorAll("[data-message]").forEach(button => {
+  button.addEventListener("click", () => {
+    message.textContent = button.dataset.message;
+  });
+});
+
+async function startDashboard() {
+  if (SUPABASE_URL === "YOUR_SUPABASE_URL" ||
+      SUPABASE_KEY === "YOUR_SUPABASE_PUBLISHABLE_KEY") {
+    emailBox.textContent = "Supabase সেটআপ বাকি আছে";
+    profileEmail.textContent = "Configuration required";
+    message.textContent = "আগের Supabase URL এবং publishable key বসাতে হবে।";
+    return;
+  }
+
+  try {
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+    const { data, error } = await supabase.auth.getSession();
+
+    if (error) throw error;
+
+    const session = data.session;
+
+    if (!session) {
+      window.location.replace("login.html");
+      return;
     }
 
-    body{
-      font-family:Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, #dffcf0 0%, transparent 32%),
-        radial-gradient(circle at top right, #e5e3ff 0%, transparent 35%),
-        linear-gradient(135deg,#f7fffb,#f5f6ff);
-      color:#182033;
-      min-height:100vh;
-    }
+    const email = session.user.email || "Email unavailable";
+    const name =
+      session.user.user_metadata?.full_name ||
+      session.user.user_metadata?.name ||
+      email.split("@")[0] ||
+      "Member";
 
-    /* TOP HEADER */
-    header{
-      background:
-        linear-gradient(135deg,#087f5b,#1261c9 55%,#653bb7);
-      color:white;
-      padding:18px 5%;
-      position:sticky;
-      top:0;
-      z-index:100;
-      box-shadow:0 8px 30px rgba(27,53,100,.18);
-    }
+    emailBox.textContent = "✉ " + email;
+    profileEmail.textContent = email;
+    userName.textContent = name;
+    avatar.textContent = name.charAt(0).toUpperCase();
 
-    .topbar{
-      max-width:1200px;
-      margin:auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
+    document.getElementById("topLogout").addEventListener("click", () => logout(supabase));
+    document.getElementById("sideLogout").addEventListener("click", () => logout(supabase));
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
+  } catch (error) {
+    console.error("Dashboard error:", error);
+    emailBox.textContent = "অ্যাকাউন্ট যাচাই করা যায়নি";
+    profileEmail.textContent = "Please try again";
+    message.textContent = "সমস্যা হয়েছে। পেজ রিফ্রেশ করে আবার চেষ্টা করো।";
+  }
+}
 
-    .brand-logo{
-      width:48px;
-      height:48px;
-      border-radius:15px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(255,255,255,.18);
-      border:1px solid rgba(255,255,255,.25);
-      font-size:25px;
-      box-shadow:0 8px 20px rgba(0,0,0,.12);
-    }
+async function logout(supabase) {
+  const { error } = await supabase.auth.signOut();
 
-    .brand h1{
-      font-size:22px;
-      letter-spacing:.5px;
-    }
+  if (error) {
+    message.textContent = "Logout হয়নি। আবার চেষ্টা করো।";
+    return;
+  }
 
-    .brand span{
-      display:block;
-      font-size:12px;
-      opacity:.82;
-      margin-top:3px;
-    }
+  window.location.replace("login.html");
+}
 
-    .logout-top{
-      background:rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.25);
-      color:white;
-      padding:11px 17px;
-      border-radius:12px;
-      cursor:pointer;
-      font-weight:bold;
-      transition:.25s;
-    }
-
-    .logout-top:hover{
-      background:white;
-      color:#1261c9;
-      transform:translateY(-2px);
-    }
-
-    /* MAIN */
-    main{
-      width:min(1200px,92%);
-      margin:30px auto 50px;
-    }
-
-    /* HERO */
-    .hero{
-      position:relative;
-      overflow:hidden;
-      border-radius:28px;
-      padding:35px;
-      color:white;
-      background:
-        linear-gradient(120deg,#087f5b,#116bc7 52%,#6a3bb8);
-      box-shadow:0 20px 55px rgba(35,72,130,.20);
-      margin-bottom:25px;
-    }
-
-    .hero:before,
-    .hero:after{
-      content:"";
-      position:absolute;
-      border-radius:50%;
-      background:rgba(255,255,255,.08);
-    }
-
-    .hero:before{
-      width:260px;
-      height:260px;
-      right:-80px;
-      top:-100px;
-    }
-
-    .hero:after{
-      width:180px;
-      height:180px;
-      right:180px;
-      bottom:-110px;
-    }
-
-    .hero-content{
-      position:relative;
-      z-index:2;
-      max-width:700px;
-    }
-
-    .hero small{
-      opacity:.85;
-      font-size:14px;
-    }
-
-    .hero h2{
-      font-size:34px;
-      margin:10px 0;
-    }
-
-    .hero p{
-      line-height:1.7;
-      opacity:.9;
-    }
-
-    .user-email{
-      margin-top:18px;
-      display:inline-block;
-      padding:9px 13px;
-      border-radius:12px;
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.20);
-      overflow-wrap:anywhere;
-    }
-
-    /* STATS */
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:18px;
-      margin-bottom:25px;
-    }
-
-    .stat-card{
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(255,255,255,.8);
-      border-radius:20px;
-      padding:22px;
-      box-shadow:0 12px 35px rgba(42,62,100,.08);
-      backdrop-filter:blur(12px);
-      transition:.25s;
-    }
-
-    .stat-card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 18px 40px rgba(42,62,100,.13);
-    }
-
-    .stat-icon{
-      width:45px;
-      height:45px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:14px;
-      font-size:22px;
-      background:#edf5ff;
-      margin-bottom:14px;
-    }
-
-    .stat-card h3{
-      font-size:25px;
-      margin-bottom:5px;
-    }
-
-    .stat-card p{
-      color:#788195;
-      font-size:13px;
-    }
-
-    /* GRID */
-    .dashboard-grid{
-      display:grid;
-      grid-template-columns:2fr 1fr;
-      gap:20px;
-    }
-
-    .card{
-      background:rgba(255,255,255,.88);
-      border:1px solid rgba(225,230,240,.9);
-      border-radius:22px;
-      padding:24px;
-      box-shadow:0 12px 35px rgba(42,62,100,.07);
-      margin-bottom:20px;
-    }
-
-    .card-title{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      margin-bottom:20px;
-    }
-
-    .card-title h3{
-      font-size:19px;
-    }
-
-    .card-title span{
-      color:#7b8496;
-      font-size:12px;
-    }
-
-    /* BALANCE */
-    .balance{
-      background:linear-gradient(135deg,#ecfff6,#eef5ff);
-    }
-
-    .balance-number{
-      font-size:36px;
-      font-weight:bold;
-      margin:12px 0;
-      background:linear-gradient(90deg,#087f5b,#1768ca,#713db7);
-      -webkit-background-clip:text;
-      color:transparent;
-    }
-
-    .balance-note{
-      color:#7a8394;
-      font-size:13px;
-    }
-
-    /* WORK */
-    .work-item{
-      display:flex;
-      align-items:center;
-      gap:15px;
-      padding:16px;
-      border:1px solid #edf0f5;
-      border-radius:15px;
-      margin-bottom:12px;
-      background:#fff;
-    }
-
-    .work-icon{
-      width:43px;
-      height:43px;
-      border-radius:13px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#eef5ff;
-      font-size:21px;
-      flex-shrink:0;
-    }
-
-    .work-info{
-      flex:1;
-    }
-
-    .work-info h4{
-      margin-bottom:5px;
-    }
-
-    .work-info p{
-      color:#81899a;
-      font-size:12px;
-    }
-
-    .status{
-      padding:6px 10px;
-      border-radius:20px;
-      background:#eafaf3;
-      color:#078457;
-      font-size:11px;
-      font-weight:bold;
-    }
-
-    /* QUICK MENU */
-    .menu-list{
-      display:grid;
-      gap:11px;
-    }
-
-    .menu-btn{
-      width:100%;
-      padding:14px;
-      border:1px solid #edf0f5;
-      background:white;
-      border-radius:14px;
-      text-align:left;
-      cursor:pointer;
-      font-size:14px;
-      transition:.2s;
-    }
-
-    .menu-btn:hover{
-      transform:translateX(4px);
-      border-color:#cbd9ef;
-      background:#f8fbff;
-    }
-
-    /* PROFILE */
-    .profile{
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
-
-    .avatar{
-      width:58px;
-      height:58px;
-      border-radius:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#087f5b,#1261c9,#6a3bb8);
-      color:white;
-      font-size:25px;
-      font-weight:bold;
-    }
-
-    .profile-info{
-      min-width:0;
-    }
-
-    .profile-info h4{
-      margin-bottom:5px;
-    }
-
-    .profile-info p{
-      color:#7d8697;
-      font-size:12px;
-      overflow-wrap:anywhere;
-    }
-
-    /* NOTIFICATION */
-    .notification{
-      display:flex;
-      gap:12px;
-      padding:13px 0;
-      border-bottom:1px solid #edf0f5;
-    }
-
-    .notification:last-child{
-      border-bottom:0;
-    }
-
-    .notification-icon{
-      width:38px;
-      height:38px;
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#f1efff;
-      flex-shrink:0;
-    }
-
-    .notification p{
-      font-size:13px;
-      line-height:1.5;
-    }
-
-    .notification small{
-      color:#9aa1ae;
-      font-size:10px;
-    }
-
-    /* LOGOUT */
-    .logout-btn{
-      width:100%;
-      border:0;
-      padding:14px;
-      border-radius:14px;
-      background:linear-gradient(135deg,#ef476f,#b83280);
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
-      font-size:14px;
-      transition:.25s;
-    }
-
-    .logout-btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 10px 25px rgba(184,50,128,.2);
-    }
-
-    #message{
-      text-align:center;
-      color:#d32f2f;
-      font-size:12px;
-      margin-top:10px;
-    }
-
-    footer{
-      text-align:center;
-      padding:10px 20px 30px;
-      color:#8a92a2;
-      font-size:12px
+startDashboard();
+</script>
+</body>
+</html>
