@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Income - Register</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 5px 25px #00000015;
+    }
+
+    h1 {
+      text-align: center;
+      color: #087f5b;
+      margin-bottom: 8px;
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 22px;
+      background: #087f5b;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    #message {
+      margin-top: 16px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Work Income</h1>
+    <p>কাজ করুন, দক্ষতা বাড়ান এবং আয় করুন</p>
+
+    <form id="registerForm">
+      <label for="name">আপনার নাম</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="আপনার পূর্ণ নাম"
+        required
+      >
+
+      <label for="email">ইমেইল</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="আপনার ইমেইল"
+        required
+      >
+
+      <label for="password">পাসওয়ার্ড</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="কমপক্ষে ৬ অক্ষর"
+        minlength="6"
+        required
+      >
+
+      <button type="submit" id="registerButton">
+        অ্যাকাউন্ট তৈরি করুন
+      </button>
+
+      <div id="message" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+
+  <script type="module">
+    import { createClient } from
+      "https://esm.sh/@supabase/supabase-js@2";
+
+    const SUPABASE_URL =
+      "https://apnjfuklpsycvgikedqv.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_verppfcz73vM-qRVAyacag_04EEoOaJ";
+
+    const supabase = createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const form = document.getElementById("registerForm");
+    const message = document.getElementById("message");
+    const button = document.getElementById("registerButton");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      button.disabled = true;
+      button.textContent = "অপেক্ষা করুন...";
+      message.style.color = "#555";
+      message.textContent = "অ্যাকাউন্ট তৈরি হচ্ছে...";
+
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email: email,
+          password: password,
+          options: {
+            data: {
+              full_name: name
+            }
+          }
+        });
+
+        if (error) {
+          throw error;
+        }
+
+        if (data.user && !data.session) {
+          message.style.color = "#087f5b";
+          message.textContent =
+            "রেজিস্ট্রেশন হয়েছে! ইমেইলে ভেরিফিকেশন লিংক এলে সেটি খুলে অ্যাকাউন্ট নিশ্চিত করুন।";
+        } else {
+          message.style.color = "#087f5b";
+          message.textContent =
+            "অ্যাকাউন্ট তৈরি হয়েছে! এখন তুমি লগইন ব্যবস্থা তৈরি করতে পারবে।";
+        }
+
+        form.reset();
+
+      } catch (error) {
+        message.style.color = "#d93025";
+        message.textContent =
+          "সমস্যা হয়েছে: " + error.message;
+      } finally {
+        button.disabled = false;
+        button.textContent = "অ্যাকাউন্ট তৈরি করুন";
+      }
+    });
+  </script>
+</body>
+</html>

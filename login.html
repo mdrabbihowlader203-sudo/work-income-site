@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Work Income</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      text-align: center;
+      padding: 40px 15px;
+    }
+    .box {
+      background: white;
+      max-width: 350px;
+      margin: auto;
+      padding: 25px;
+      border-radius: 12px;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+    button {
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: 0.6;
+    }
+    #message {
+      overflow-wrap: anywhere;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Work Income</h1>
+    <h2>Login</h2>
+
+    <form id="loginForm">
+      <input id="email" type="email"
+        placeholder="Email Address"
+        autocomplete="email" required>
+
+      <input id="password" type="password"
+        placeholder="Password"
+        autocomplete="current-password" required>
+
+      <button id="loginButton" type="submit">Login</button>
+    </form>
+
+    <p id="message" role="status"></p>
+
+    <p>Don't have an account?
+      <a href="register.html">Register</a>
+    </p>
+  </div>
+
+  <script type="module">
+    import { createClient } from
+      'https://esm.sh/@supabase/supabase-js@2';
+
+    const SUPABASE_URL =
+      'https://apnjfuklpsycvgikedqv.supabase.co';
+
+    const SUPABASE_KEY =
+      'sb_publishable_verppfcz73vM-qRVAyacag_04EEoOaJ';
+
+    const supabase = createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+    const form = document.getElementById('loginForm');
+    const message = document.getElementById('message');
+    const button = document.getElementById('loginButton');
+
+    // আগে থেকেই লগইন করা থাকলে Dashboard-এ যাও
+    const { data: sessionData, error: sessionError } =
+      await supabase.auth.getSession();
+
+    if (!sessionError && sessionData.session) {
+      window.location.replace('dashboard.html');
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      button.disabled = true;
+      button.textContent = 'Logging in...';
+      message.textContent = '';
+
+      const email = document.getElementById('email')
+        .value.trim();
+
+      const password = document.getElementById('password')
+        .value;
+
+      try {
+        const { data, error } =
+          await supabase.auth.signInWithPassword({
+            email,
+            password
+          });
+
+        if (error) throw error;
+
+        if (!data.session) {
+          message.textContent =
+            'লগইন সম্পন্ন হয়নি। আবার চেষ্টা করো।';
+          return;
+        }
+
+        message.textContent = 'লগইন সফল! Dashboard খুলছে...';
+
+        window.location.replace('dashboard.html');
+
+      } catch (error) {
+        console.error('Login error:', error);
+
+        if (error.message === 'Invalid login credentials') {
+          message.textContent =
+            'ইমেইল অথবা পাসওয়ার্ড সঠিক নয়।';
+        } else if (
+          error.message.toLowerCase().includes('email not confirmed')
+        ) {
+          message.textContent =
+            'আগে তোমার ইমেইল ভেরিফাই করো।';
+        } else {
+          message.textContent =
+            'লগইন হয়নি। ইন্টারনেট ও Supabase সেটিংস পরীক্ষা করো।';
+        }
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Login';
+      }
+    });
+  </script>
+</body>
+</html>
