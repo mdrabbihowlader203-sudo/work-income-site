@@ -2,52 +2,57 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07133d">
 <meta name="description" content="FREE INCOME - Learn skills, explore opportunities and build your future.">
 <title>FREE INCOME | Your Future Starts Here</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 :root{
   --navy:#07133d;
   --blue:#087cff;
   --cyan:#00d5ff;
-  --purple:#8b35ff
+  --purple:#8b35ff;
+  --green:#22e6a8;
+  --white:#ffffff;
 }
 
 html{
   scroll-behavior:smooth;
-  scroll-padding-top:85px
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
   background:#f4f7ff;
-  color:#111c49;
-  line-height:1.6;
-  overflow-x:hidden
+  color:#101b45;
+  overflow-x:hidden;
 }
 
 a{
   text-decoration:none;
-  color:inherit
+  color:inherit;
 }
 
 .container{
   width:min(1180px,92%);
-  margin:auto
+  margin:auto;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
+
 header{
   position:sticky;
   top:0;
-  z-index:99;
-  background:#07133df5;
-  border-bottom:1px solid #344b91;
-  backdrop-filter:blur(15px)
+  z-index:1000;
+  background:rgba(7,19,61,.96);
+  border-bottom:1px solid rgba(100,150,255,.35);
+  backdrop-filter:blur(15px);
 }
 
 nav{
@@ -55,345 +60,127 @@ nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px
+  gap:20px;
 }
 
 .brand{
   display:flex;
   align-items:center;
   gap:10px;
-  flex-shrink:0
 }
 
 .logo{
-  width:44px;
-  height:44px;
+  width:45px;
+  height:45px;
   border-radius:14px;
   display:grid;
   place-items:center;
-  font-size:29px;
-  font-weight:900;
   color:white;
-  background:linear-gradient(135deg,var(--cyan),var(--blue),var(--purple));
-  box-shadow:0 0 22px #168cff55
+  font-size:25px;
+  font-weight:900;
+  background:linear-gradient(
+    135deg,
+    var(--green),
+    var(--cyan),
+    var(--blue),
+    var(--purple)
+  );
+  box-shadow:0 0 25px rgba(0,213,255,.35);
 }
 
 .brand-name{
-  font-size:clamp(20px,2.5vw,28px);
-  font-weight:900;
-  letter-spacing:-1px;
   color:white;
-  line-height:1.15
+  font-size:25px;
+  font-weight:900;
+  line-height:1;
 }
 
 .brand-name span{
-  background:linear-gradient(90deg,var(--cyan),#7782ff,#ce7bff);
+  background:linear-gradient(
+    90deg,
+    var(--cyan),
+    #7485ff,
+    #d16cff
+  );
   -webkit-background-clip:text;
   background-clip:text;
-  color:transparent
+  color:transparent;
 }
 
 .tagline{
-  font-size:11px;
-  color:#c3d4ff
+  margin-top:5px;
+  color:#b9ccf5;
+  font-size:10px;
 }
 
 .nav-links{
   display:flex;
+  gap:24px;
   align-items:center;
-  gap:22px;
-  color:#edf2ff;
+  color:#edf3ff;
   font-size:14px;
-  font-weight:700
+  font-weight:700;
+}
+
+.nav-links a{
+  transition:.25s;
 }
 
 .nav-links a:hover{
-  color:var(--cyan)
+  color:var(--cyan);
 }
 
 .nav-actions{
   display:flex;
-  gap:9px
+  gap:9px;
 }
 
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:8px;
+  gap:7px;
   padding:12px 21px;
-  border:1px solid transparent;
   border-radius:30px;
+  border:1px solid transparent;
   font-size:14px;
   font-weight:800;
   cursor:pointer;
-  transition:.25s
+  transition:.25s;
 }
 
 .btn:hover{
   transform:translateY(-3px);
-  filter:brightness(1.12)
 }
 
 .primary{
   color:white;
-  background:linear-gradient(105deg,#00c9ff,#176bff,#913cff);
-  box-shadow:0 8px 24px #3b5bff44
+  background:linear-gradient(
+    105deg,
+    #00c9ff,
+    #176bff,
+    #913cff
+  );
+  box-shadow:0 10px 28px rgba(40,80,255,.3);
 }
 
 .outline{
   color:white;
-  background:#ffffff08;
-  border-color:#537dff
+  background:rgba(255,255,255,.06);
+  border-color:#5c7fff;
 }
 
 .menu-toggle{
   display:none;
-  background:transparent;
   color:white;
+  background:transparent;
   border:1px solid #5265a5;
-  border-radius:9px;
+  border-radius:10px;
   padding:6px 12px;
-  font-size:23px
+  font-size:22px;
 }
 
-/* HERO */
+/* ================= HERO ================= */
+
 .hero{
   position:relative;
-  overflow:hidden;
-  color:white;
-  background:
-    radial-gradient(ellipse at 82% 40%,#283eea 0,transparent 35%),
-    radial-gradient(ellipse at 100% 0,#7929df 0,transparent 37%),
-    linear-gradient(120deg,#061238,#091c61 57%,#29106b)
-}
-
-.hero-grid{
-  min-height:560px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:28px;
-  padding:52px 0 48px
-}
-
-.eyebrow{
-  display:inline-block;
-  border:1px solid #438aff88;
-  background:#1688ff20;
-  padding:7px 15px;
-  border-radius:30px;
-  color:#7cecff;
-  font-size:13px;
-  font-weight:800;
-  margin-bottom:20px
-}
-
-h1{
-  font-size:clamp(43px,5.5vw,70px);
-  line-height:1.04;
-  letter-spacing:-2px;
-  margin-bottom:17px
-}
-
-.gradient-text{
-  display:block;
-  background:linear-gradient(95deg,#fff,#13d5ff 35%,#6980ff 65%,#d16cff);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent
-}
-
-.hero h2{
-  font-size:clamp(22px,2.5vw,31px);
-  line-height:1.25;
-  margin-bottom:15px
-}
-
-.hero-copy>p{
-  max-width:520px;
-  color:#c6d6fa;
-  font-size:16px;
-  margin-bottom:25px
-}
-
-.hero-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px
-}
-
-.hero-buttons .btn{
-  padding:14px 24px;
-  min-width:145px
-}
-
-.trust-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:17px;
-  margin-top:27px
-}
-
-.trust-row span{
-  font-size:12px;
-  color:#e2ebff
-}
-
-.trust-row b{
-  color:var(--cyan);
-  margin-right:5px
-}
-
-/* CARTOON ILLUSTRATION */
-.art-wrap{
-  position:relative;
-  min-height:390px;
-  display:grid;
-  place-items:center
-}
-
-.art-glow{
-  position:absolute;
-  width:280px;
-  height:280px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#00c9ff,#763bff);
-  filter:blur(65px);
-  opacity:.48
-}
-
-.art-card{
-  position:relative;
-  width:100%;
-  max-width:500px;
-  overflow:hidden;
-  border:1px solid #76c6ff77;
-  border-radius:25px;
-  padding:20px 18px 0;
-  background:linear-gradient(145deg,#1684ff42,#271a7166);
-  box-shadow:0 25px 80px #0005
-}
-
-.art-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px
-}
-
-.art-label{
-  font-size:12px;
-  color:#bdeaff;
-  font-weight:800
-}
-
-.art-pill{
-  padding:5px 10px;
-  border-radius:30px;
-  background:#ffffff12;
-  border:1px solid #ffffff22;
-  font-size:10px;
-  color:#e4eaff
-}
-
-.art-title{
-  font-size:23px;
-  font-weight:900;
-  margin-top:13px;
-  line-height:1.25
-}
-
-.art-subtitle{
-  font-size:12px;
-  color:#c4d8ff;
-  margin-top:4px
-}
-
-.cartoon{
-  position:relative;
-  height:260px;
-  margin-top:10px;
-  overflow:hidden;
-  border-radius:17px 17px 0 0;
-  background:
-    radial-gradient(ellipse at 55% 40%,#3e85ff 0,transparent 50%),
-    linear-gradient(135deg,#081747,#151c6a 55%,#5823a0)
-}
-
-.cartoon:before{
-  content:"";
-  position:absolute;
-  width:200px;
-  height:200px;
-  right:18px;
-  top:8px;
-  border-radius:50%;
-  background:linear-gradient(145deg,#04cfff,#743cff);
-  opacity:.4
-}
-
-.spark{
-  position:absolute;
-  color:#a5f4ff;
-  font-size:22px
-}
-
-.spark.one{
-  top:16px;
-  left:22px
-}
-
-.spark.two{
-  top:52px;
-  right:24px
-}
-
-.desk{
-  position:absolute;
-  bottom:0;
-  left:0;
-  width:100%;
-  height:52px;
-  background:linear-gradient(#a17cff,#5148ba 45%,#172957);
-  border-top:3px solid #9bc8ff;
-  z-index:10
-}
-
-/* PERSON */
-.person{
-  position:absolute;
-  inset:0
-}
-
-/* FIXED HAIR - NO CAP / NO HAT */
-.hair{
-  position:absolute;
-  width:94px;
-  height:72px;
-  top:27px;
-  left:49%;
-  transform:translateX(-50%) rotate(-4deg);
-  background:#151b35;
-  border-radius:52% 48% 38% 35%;
-  z-index:4;
-  box-shadow:
-    inset 10px 4px 0 #354875,
-    inset -5px -3px 0 #0b1026
-}
-
-.hair:after{
-  content:"";
-  position:absolute;
-  top:2px;
-  left:13px;
-  width:55px;
-  height:25px;
-  border-radius:80% 20% 70% 25%;
-  transform:rotate(-20deg);
-  background:#405887
-}
-
-/* FACE FIX */
-.face{
-  position
