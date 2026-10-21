@@ -1,67 +1,671 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Work Income</title>
+  <meta name="theme-color" content="#080d20">
+  <title>Login | Work Income</title>
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f2f5;
-      text-align: center;
-      padding: 40px 15px;
+    :root {
+      --bg: #080d20;
+      --purple: #8975ff;
+      --gold: #f2ca79;
+      --text: #f7f8ff;
+      --muted: #aab5d5;
     }
-    .box {
-      background: white;
-      max-width: 350px;
-      margin: auto;
-      padding: 25px;
-      border-radius: 12px;
-    }
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
+
+    * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
-    button {
-      background: #1877f2;
-      color: white;
-      border: none;
-      border-radius: 6px;
+
+    body {
+      min-height: 100vh;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 10% 10%, #40318c55, transparent 38%),
+        radial-gradient(ellipse at 85% 85%, #124d8050, transparent 42%),
+        var(--bg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .navbar {
+      width: 100%;
+      max-width: 1250px;
+      margin: auto;
+      padding: 22px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      padding: 4px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 25px #8975ff35;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -.6px;
+    }
+
+    .brand-name span {
+      color: var(--gold);
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    .nav-text {
+      color: #cbd4f4;
+      font-size: 13px;
+    }
+
+    .nav-text span {
+      color: var(--gold);
+      margin: 0 8px;
+    }
+
+    .main {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .hero {
+      animation: enter .7s ease both;
+    }
+
+    .tag {
+      display: inline-block;
+      color: #d2caff;
+      border: 1px solid #8975ff60;
+      background: #8975ff15;
+      border-radius: 30px;
+      padding: 10px 15px;
+      font-size: 12px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: clamp(37px, 4.5vw, 59px);
+      line-height: 1.13;
+      letter-spacing: -2px;
+      margin-bottom: 23px;
+    }
+
+    .gradient-text {
+      display: block;
+      background: linear-gradient(100deg, #a18cff, #f2ca79);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-desc {
+      max-width: 430px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .features {
+      display: grid;
+      gap: 19px;
+      margin-top: 32px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border: 1px solid #ffffff18;
+      background: linear-gradient(135deg, #8975ff30, #e8c77910);
+      border-radius: 14px;
+      font-size: 19px;
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .feature p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .motto {
+      margin-top: 34px;
+      font-size: 21px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .card {
+      padding: 34px 31px;
+      border: 1px solid #8d80ff55;
+      border-radius: 25px;
+      background: linear-gradient(145deg, #17203df0, #0d1530f5);
+      box-shadow: 0 25px 80px #0006, inset 0 1px #ffffff10;
+      animation: enter .8s .1s ease both;
+    }
+
+    .card-head {
+      text-align: center;
+      margin-bottom: 27px;
+    }
+
+    .card-logo {
+      width: 59px;
+      height: 59px;
+      object-fit: contain;
+      padding: 5px;
+      background: #fff;
+      border-radius: 17px;
+      margin-bottom: 11px;
+    }
+
+    .card-brand {
+      font-size: 23px;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .card-brand span {
+      color: var(--gold);
+    }
+
+    .card h2 {
+      font-size: 27px;
+      margin-bottom: 9px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #7184bd55;
+      border-radius: 12px;
+      padding: 0 13px;
+      background: #080d2038;
+      transition: .25s;
+    }
+
+    .input-wrap:focus-within {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 4px #8975ff18;
+      background: #080d2055;
+    }
+
+    .input-icon {
+      font-size: 17px;
+      color: #a9b9ed;
+    }
+
+    input {
+      width: 100%;
+      min-width: 0;
+      padding: 16px 0;
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: #fff;
+      font: inherit;
+      font-size: 13px;
+    }
+
+    input::placeholder {
+      color: #8393bd;
+    }
+
+    .toggle {
+      border: 0;
+      background: transparent;
+      color: #b9aaff;
+      font-size: 11px;
+      cursor: pointer;
+      padding: 8px 0;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin: 1px 0 23px;
+      font-size: 11px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #c5cee8;
       cursor: pointer;
     }
-    button:disabled {
-      opacity: 0.6;
+
+    .remember input {
+      width: 14px;
+      height: 14px;
+      accent-color: var(--purple);
+      padding: 0;
     }
+
+    .forgot {
+      color: #ae9bff;
+      font-weight: 700;
+    }
+
+    .forgot:hover,
+    .register a:hover {
+      text-decoration: underline;
+    }
+
+    .login-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 16px;
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      background: linear-gradient(105deg, #563af2, #9b60f5 62%, #f0c675);
+      box-shadow: 0 8px 25px #7752ff35;
+      transition: transform .2s, filter .2s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .login-btn:disabled {
+      opacity: .7;
+      cursor: wait;
+      transform: none;
+    }
+
     #message {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      line-height: 1.6;
       overflow-wrap: anywhere;
+    }
+
+    #message.show {
+      display: block;
+    }
+
+    #message.error {
+      color: #ffb4b4;
+      background: #a52b321e;
+      border: 1px solid #ff686830;
+    }
+
+    #message.success {
+      color: #8ef0bf;
+      background: #1ca56b18;
+      border: 1px solid #4be0a030;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: #8795bb;
+      font-size: 11px;
+      margin: 23px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: #ffffff20;
+    }
+
+    .register {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 25px;
+    }
+
+    .register a {
+      color: #b5a4ff;
+      font-weight: 800;
+      margin-left: 5px;
+    }
+
+    .secure-note {
+      text-align: center;
+      color: #8497c1;
+      font-size: 11px;
+      margin-top: 23px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      padding: 20px 30px;
+      border-top: 1px solid #ffffff12;
+      color: #8996b9;
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 17px;
+      flex-wrap: wrap;
+    }
+
+    @keyframes enter {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .main {
+        grid-template-columns: 1fr;
+        max-width: 540px;
+        gap: 35px;
+        padding: 25px 22px 45px;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .hero-desc {
+        margin: auto;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .features {
+        max-width: 320px;
+        margin: 27px auto 0;
+        text-align: left;
+      }
+
+      .motto {
+        margin-top: 25px;
+      }
+
+      .nav-text {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 18px;
+      }
+
+      .brand-name {
+        font-size: 19px;
+      }
+
+      .brand small {
+        font-size: 8px;
+      }
+
+      .logo {
+        width: 45px;
+        height: 45px;
+      }
+
+      .main {
+        padding: 20px 16px 35px;
+      }
+
+      .hero h1 {
+        font-size: 37px;
+        letter-spacing: -1px;
+      }
+
+      .card {
+        padding: 28px 21px;
+        border-radius: 21px;
+      }
+
+      .card h2 {
+        font-size: 25px;
+      }
+
+      .footer {
+        justify-content: center;
+        text-align: center;
+        padding: 20px 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="box">
-    <h1>Work Income</h1>
-    <h2>Login</h2>
 
-    <form id="loginForm">
-      <input id="email" type="email"
-        placeholder="Email Address"
-        autocomplete="email" required>
+  <header class="navbar">
+    <a class="brand" href="index.html" aria-label="Work Income Home">
+      <img class="logo" src="logo/Logo.png"
+           alt="Work Income Logo"
+           onerror="this.style.display='none'">
+      <div>
+        <div class="brand-name">Work <span>Income</span></div>
+        <small>SKILLS • WORK • INCOME</small>
+      </div>
+    </a>
 
-      <input id="password" type="password"
-        placeholder="Password"
-        autocomplete="current-password" required>
+    <div class="nav-text">
+      Build Your Future <span>|</span> Create Your Income
+    </div>
+  </header>
 
-      <button id="loginButton" type="submit">Login</button>
-    </form>
+  <main class="main">
 
-    <p id="message" role="status"></p>
+    <section class="hero">
+      <div class="tag">✦ &nbsp; YOUR NEXT OPPORTUNITY STARTS HERE</div>
 
-    <p>Don't have an account?
-      <a href="register.html">Register</a>
-    </p>
-  </div>
+      <h1>
+        Your Journey to
+        <span class="gradient-text">Better Income</span>
+        Starts Here
+      </h1>
+
+      <p class="hero-desc">
+        Discover opportunities, develop your skills, and take
+        the next step toward your goals with Work Income.
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🚀</div>
+          <div>
+            <strong>Explore Opportunities</strong>
+            <p>Discover new ways to learn and grow.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🛡️</div>
+          <div>
+            <strong>Account Security</strong>
+            <p>Your account access is protected by Supabase Auth.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">📈</div>
+          <div>
+            <strong>Build Your Future</strong>
+            <p>Keep learning and moving toward your goals.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="motto">Dream &nbsp; ✦ &nbsp; Work &nbsp; ✦ &nbsp; Grow</div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <img class="card-logo" src="logo/Logo.png"
+             alt="Work Income Logo"
+             onerror="this.style.display='none'">
+
+        <div class="card-brand">Work <span>Income</span></div>
+
+        <h2>Welcome Back!</h2>
+        <p class="subtitle">
+          Sign in to continue to your account.
+        </p>
+      </div>
+
+      <form id="loginForm">
+        <div class="field">
+          <label for="email">Email Address</label>
+
+          <div class="input-wrap">
+            <span class="input-icon" aria-hidden="true">✉</span>
+            <input id="email" type="email"
+                   placeholder="Enter your email address"
+                   autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+
+          <div class="input-wrap">
+            <span class="input-icon" aria-hidden="true">🔒</span>
+            <input id="password" type="password"
+                   placeholder="Enter your password"
+                   autocomplete="current-password" required>
+            <button class="toggle" type="button"
+                    id="togglePassword">Show</button>
+          </div>
+        </div>
+
+        <div class="options">
+          <label class="remember">
+            <input type="checkbox" id="remember">
+            Remember me
+          </label>
+
+          <a class="forgot" href="forgot-password.html">
+            Forgot Password?
+          </a>
+        </div>
+
+        <button class="login-btn" id="loginButton" type="submit">
+          Login to Account &nbsp; →
+        </button>
+      </form>
+
+      <p id="message" role="status" aria-live="polite"></p>
+
+      <div class="divider">SECURE ACCOUNT ACCESS</div>
+
+      <p class="register">
+        Don't have an account?
+        <a href="register.html">Create Account →</a>
+      </p>
+
+      <p class="secure-note">🔐 &nbsp; Your account is secured with Supabase Auth</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Work Income. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html" style="color:inherit">Home</a>
+      <a href="register.html" style="color:inherit">Create Account</a>
+      <a href="forgot-password.html" style="color:inherit">Password Help</a>
+    </div>
+  </footer>
 
   <script type="module">
     import { createClient } from
@@ -81,27 +685,53 @@
     const form = document.getElementById('loginForm');
     const message = document.getElementById('message');
     const button = document.getElementById('loginButton');
+    const passwordInput = document.getElementById('password');
+    const toggle = document.getElementById('togglePassword');
 
-    // আগে থেকেই লগইন করা থাকলে Dashboard-এ যাও
-    const { data: sessionData, error: sessionError } =
-      await supabase.auth.getSession();
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
 
-    if (!sessionError && sessionData.session) {
-      window.location.replace('dashboard.html');
+    toggle.addEventListener('click', () => {
+      const show = passwordInput.type === 'password';
+
+      passwordInput.type = show ? 'text' : 'password';
+      toggle.textContent = show ? 'Hide' : 'Show';
+      toggle.setAttribute(
+        'aria-label',
+        show ? 'Hide password' : 'Show password'
+      );
+    });
+
+    function showMessage(text, type) {
+      message.textContent = text;
+      message.className = 'show ' + type;
+    }
+
+    try {
+      const { data, error } = await supabase.auth.getSession();
+
+      if (error) throw error;
+
+      if (data.session) {
+        window.location.replace('dashboard.html');
+      }
+    } catch (error) {
+      console.error('Session check error:', error);
     }
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
+      if (button.disabled) return;
+
       button.disabled = true;
-      button.textContent = 'Logging in...';
+      button.textContent = 'Signing in...';
+      message.className = '';
       message.textContent = '';
 
       const email = document.getElementById('email')
         .value.trim();
-
-      const password = document.getElementById('password')
-        .value;
+      const password = passwordInput.value;
 
       try {
         const { data, error } =
@@ -113,35 +743,47 @@
         if (error) throw error;
 
         if (!data.session) {
-          message.textContent =
-            'লগইন সম্পন্ন হয়নি। আবার চেষ্টা করো।';
+          showMessage(
+            'Login was not completed. Please try again.',
+            'error'
+          );
           return;
         }
 
-        message.textContent = 'লগইন সফল! Dashboard খুলছে...';
+        showMessage(
+          'Login successful! Opening your dashboard...',
+          'success'
+        );
 
         window.location.replace('dashboard.html');
 
       } catch (error) {
         console.error('Login error:', error);
 
-        if (error.message === 'Invalid login credentials') {
-          message.textContent =
-            'ইমেইল অথবা পাসওয়ার্ড সঠিক নয়।';
-        } else if (
-          error.message.toLowerCase().includes('email not confirmed')
-        ) {
-          message.textContent =
-            'আগে তোমার ইমেইল ভেরিফাই করো।';
+        const text = String(error.message || '').toLowerCase();
+
+        if (text.includes('invalid login credentials')) {
+          showMessage(
+            'Incorrect email or password. Please try again.',
+            'error'
+          );
+        } else if (text.includes('email not confirmed')) {
+          showMessage(
+            'Please verify your email before logging in.',
+            'error'
+          );
         } else {
-          message.textContent =
-            'লগইন হয়নি। ইন্টারনেট ও Supabase সেটিংস পরীক্ষা করো।';
+          showMessage(
+            'Login failed. Please check your internet connection and try again.',
+            'error'
+          );
         }
       } finally {
         button.disabled = false;
-        button.textContent = 'Login';
+        button.textContent = 'Login to Account →';
       }
     });
   </script>
+
 </body>
 </html>
