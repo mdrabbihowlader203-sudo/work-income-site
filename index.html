@@ -16,11 +16,14 @@
 
 :root{
   --navy:#07133d;
+  --navy2:#0c1c55;
   --blue:#087cff;
   --cyan:#00d5ff;
   --purple:#8b35ff;
+  --violet:#b14cff;
   --green:#22e6a8;
   --white:#ffffff;
+  --text:#17234f;
 }
 
 html{
@@ -29,14 +32,18 @@ html{
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#f4f7ff;
-  color:#101b45;
+  background:#f5f8ff;
+  color:var(--text);
   overflow-x:hidden;
 }
 
 a{
   text-decoration:none;
   color:inherit;
+}
+
+button{
+  font-family:inherit;
 }
 
 .container{
@@ -48,139 +55,4 @@ a{
 
 header{
   position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(7,19,61,.96);
-  border-bottom:1px solid rgba(100,150,255,.35);
-  backdrop-filter:blur(15px);
-}
-
-nav{
-  min-height:78px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.logo{
-  width:45px;
-  height:45px;
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  color:white;
-  font-size:25px;
-  font-weight:900;
-  background:linear-gradient(
-    135deg,
-    var(--green),
-    var(--cyan),
-    var(--blue),
-    var(--purple)
-  );
-  box-shadow:0 0 25px rgba(0,213,255,.35);
-}
-
-.brand-name{
-  color:white;
-  font-size:25px;
-  font-weight:900;
-  line-height:1;
-}
-
-.brand-name span{
-  background:linear-gradient(
-    90deg,
-    var(--cyan),
-    #7485ff,
-    #d16cff
-  );
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-
-.tagline{
-  margin-top:5px;
-  color:#b9ccf5;
-  font-size:10px;
-}
-
-.nav-links{
-  display:flex;
-  gap:24px;
-  align-items:center;
-  color:#edf3ff;
-  font-size:14px;
-  font-weight:700;
-}
-
-.nav-links a{
-  transition:.25s;
-}
-
-.nav-links a:hover{
-  color:var(--cyan);
-}
-
-.nav-actions{
-  display:flex;
-  gap:9px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:7px;
-  padding:12px 21px;
-  border-radius:30px;
-  border:1px solid transparent;
-  font-size:14px;
-  font-weight:800;
-  cursor:pointer;
-  transition:.25s;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-}
-
-.primary{
-  color:white;
-  background:linear-gradient(
-    105deg,
-    #00c9ff,
-    #176bff,
-    #913cff
-  );
-  box-shadow:0 10px 28px rgba(40,80,255,.3);
-}
-
-.outline{
-  color:white;
-  background:rgba(255,255,255,.06);
-  border-color:#5c7fff;
-}
-
-.menu-toggle{
-  display:none;
-  color:white;
-  background:transparent;
-  border:1px solid #5265a5;
-  border-radius:10px;
-  padding:6px 12px;
-  font-size:22px;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-  position:relative;
+  top:
