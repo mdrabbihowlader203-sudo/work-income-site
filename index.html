@@ -3,385 +3,599 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#07133d">
-<meta name="description" content="FREE INCOME - Learn skills, explore opportunities and build your future.">
+<meta name="theme-color" content="#f5fff9">
+<meta name="description" content="FREE INCOME - Learn digital skills, discover opportunities and build your future.">
+
 <title>FREE INCOME | Your Future Starts Here</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#07133d;--blue:#087cff;--cyan:#00d5ff;--purple:#8b35ff}
-html{scroll-behavior:smooth;scroll-padding-top:85px}
-body{font-family:Arial,Helvetica,sans-serif;background:#f4f7ff;color:#111c49;line-height:1.6;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-.container{width:min(1180px,92%);margin:auto}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #21bd83;
+  --blue: #5275f5;
+  --purple: #8957ed;
+  --dark: #182544;
+  --muted: #68738a;
+  --white: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  width: min(1160px, 92%);
+  margin: auto;
+}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:99;background:#07133df5;border-bottom:1px solid #344b91;backdrop-filter:blur(15px)}
-nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:29px;font-weight:900;color:white;background:linear-gradient(135deg,var(--cyan),var(--blue),var(--purple));box-shadow:0 0 22px #168cff55}
-.brand-name{font-size:clamp(20px,2.5vw,28px);font-weight:900;letter-spacing:-1px;color:white;line-height:1.15}
-.brand-name span{background:linear-gradient(90deg,var(--cyan),#7782ff,#ce7bff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.tagline{font-size:11px;color:#c3d4ff}
-.nav-links{display:flex;align-items:center;gap:22px;color:#edf2ff;font-size:14px;font-weight:700}
-.nav-links a:hover{color:var(--cyan)}
-.nav-actions{display:flex;gap:9px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 21px;border:1px solid transparent;border-radius:30px;font-size:14px;font-weight:800;cursor:pointer;transition:.25s}
-.btn:hover{transform:translateY(-3px);filter:brightness(1.12)}
-.primary{color:white;background:linear-gradient(105deg,#00c9ff,#176bff,#913cff);box-shadow:0 8px 24px #3b5bff44}
-.outline{color:white;background:#ffffff08;border-color:#537dff}
-.menu-toggle{display:none;background:transparent;color:white;border:1px solid #5265a5;border-radius:9px;padding:6px 12px;font-size:23px}
+
+header {
+  background: rgba(255,255,255,.94);
+  border-bottom: 1px solid #edf1f7;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(14px);
+}
+
+.navbar {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -.8px;
+}
+
+.brand-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  color: white;
+  background: linear-gradient(135deg, var(--green), var(--blue), var(--purple));
+  box-shadow: 0 7px 18px #6583ed35;
+}
+
+.brand-name span:nth-child(1) { color: var(--green); }
+.brand-name span:nth-child(2) { color: var(--blue); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #46516a;
+}
+
+.nav-links a:hover {
+  color: var(--purple);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 21px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  font-size: 14px;
+  transition: .25s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: #fff;
+  color: var(--blue);
+  border-color: #dce4ff;
+}
+
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(110deg, var(--green), var(--blue), var(--purple));
+  box-shadow: 0 8px 20px #647bf533;
+}
+
+.menu-btn {
+  display: none;
+  background: #f2f5ff;
+  color: var(--dark);
+  border: 0;
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 22px;
+}
 
 /* HERO */
-.hero{position:relative;overflow:hidden;color:white;background:radial-gradient(ellipse at 82% 40%,#283eea 0,transparent 35%),radial-gradient(ellipse at 100% 0,#7929df 0,transparent 37%),linear-gradient(120deg,#061238,#091c61 57%,#29106b)}
-.hero-grid{min-height:560px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:28px;padding:52px 0 48px}
-.eyebrow{display:inline-block;border:1px solid #438aff88;background:#1688ff20;padding:7px 15px;border-radius:30px;color:#7cecff;font-size:13px;font-weight:800;margin-bottom:20px}
-h1{font-size:clamp(43px,5.5vw,70px);line-height:1.04;letter-spacing:-2px;margin-bottom:17px}
-.gradient-text{display:block;background:linear-gradient(95deg,#fff,#13d5ff 35%,#6980ff 65%,#d16cff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero h2{font-size:clamp(22px,2.5vw,31px);line-height:1.25;margin-bottom:15px}
-.hero-copy>p{max-width:520px;color:#c6d6fa;font-size:16px;margin-bottom:25px}
-.hero-buttons{display:flex;flex-wrap:wrap;gap:12px}
-.hero-buttons .btn{padding:14px 24px;min-width:145px}
-.trust-row{display:flex;flex-wrap:wrap;gap:17px;margin-top:27px}
-.trust-row span{font-size:12px;color:#e2ebff}
-.trust-row b{color:var(--cyan);margin-right:5px}
 
-/* CARTOON ILLUSTRATION */
-.art-wrap{position:relative;min-height:390px;display:grid;place-items:center}
-.art-glow{position:absolute;width:280px;height:280px;border-radius:50%;background:linear-gradient(135deg,#00c9ff,#763bff);filter:blur(65px);opacity:.48}
-.art-card{position:relative;width:100%;max-width:500px;overflow:hidden;border:1px solid #76c6ff77;border-radius:25px;padding:20px 18px 0;background:linear-gradient(145deg,#1684ff42,#271a7166);box-shadow:0 25px 80px #0005}
-.art-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.art-label{font-size:12px;color:#bdeaff;font-weight:800}
-.art-pill{padding:5px 10px;border-radius:30px;background:#ffffff12;border:1px solid #ffffff22;font-size:10px;color:#e4eaff}
-.art-title{font-size:23px;font-weight:900;margin-top:13px;line-height:1.25}
-.art-subtitle{font-size:12px;color:#c4d8ff;margin-top:4px}
-.cartoon{position:relative;height:260px;margin-top:10px;overflow:hidden;border-radius:17px 17px 0 0;background:radial-gradient(ellipse at 55% 40%,#3e85ff 0,transparent 50%),linear-gradient(135deg,#081747,#151c6a 55%,#5823a0)}
-.cartoon:before{content:"";position:absolute;width:200px;height:200px;right:18px;top:8px;border-radius:50%;background:linear-gradient(145deg,#04cfff,#743cff);opacity:.4}
-.spark{position:absolute;color:#a5f4ff;font-size:22px}
-.spark.one{top:16px;left:22px}.spark.two{top:52px;right:24px}
-.desk{position:absolute;bottom:0;left:0;width:100%;height:52px;background:linear-gradient(#a17cff,#5148ba 45%,#172957);border-top:3px solid #9bc8ff}
-.person{position:absolute;inset:0}
-.hair{position:absolute;width:96px;height:79px;top:27px;left:49%;transform:translateX(-50%) rotate(-7deg);background:#111b43;border-radius:55% 48% 35% 32%;z-index:4;box-shadow:inset 8px 3px #344b80}
-.hair:after{content:"";position:absolute;top:3px;left:8px;width:57px;height:27px;border-radius:80% 15% 80% 20%;transform:rotate(-24deg);background:#2a437d}
-.face{position:absolute;width:70px;height:88px;top:59px;left:49%;transform:translateX(-50%) rotate(-3deg);border-radius:42% 45% 48% 48%;z-index:3;background:linear-gradient(130deg,#ffd8b1,#eea778)}
-.ear{position:absolute;right:-6px;top:37px;width:13px;height:21px;border-radius:50%;background:#e9a071}
-.eye{position:absolute;top:35px;left:15px;width:7px;height:9px;border-radius:50%;background:#152044}
-.eye.right{left:46px}
-.brow{position:absolute;top:28px;left:12px;width:15px;height:4px;border-radius:4px;background:#392342;transform:rotate(-8deg)}
-.brow.right{left:43px}
-.smile{position:absolute;top:56px;left:25px;width:22px;height:9px;border-bottom:3px solid #a9434d;border-radius:0 0 50% 50%}
-.neck{position:absolute;top:135px;left:49%;transform:translateX(-50%);width:30px;height:34px;background:#eaa77b;z-index:2}
-.body{position:absolute;top:151px;left:49%;transform:translateX(-50%);width:150px;height:120px;border-radius:58px 58px 0 0;background:linear-gradient(120deg,#00c7f6,#1260db 60%,#6535e9);z-index:2;border:2px solid #6bbfff55}
-.body:before{content:"";position:absolute;left:49%;top:0;height:80px;width:3px;background:#8eeeff55}
-.arm{position:absolute;top:183px;left:30%;width:115px;height:24px;border-radius:25px;background:#0879ec;transform:rotate(22deg);z-index:5}
-.hand{position:absolute;top:204px;left:49%;width:42px;height:16px;border-radius:20px;background:#f3b58b;transform:rotate(-10deg);z-index:7}
-.laptop{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:190px;height:115px;z-index:6}
-.screen{height:106px;border:5px solid #b8d9ff;border-bottom:8px solid #7288ca;border-radius:10px 10px 4px 4px;background:linear-gradient(140deg,#f4f8ff,#b7d9ff);box-shadow:0 0 25px #00caff55;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#0c2c70;font-weight:900}
-.screen-logo{font-size:25px;background:linear-gradient(90deg,#087cff,#9b42ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.screen small{font-size:8px;letter-spacing:1px}
-.base{width:208px;height:9px;margin-left:-9px;background:linear-gradient(#e3efff,#8098d7);clip-path:polygon(0 0,100% 0,91% 100%,8% 100%);border-radius:0 0 10px 10px}
-.floating-note{position:absolute;right:7px;top:25px;z-index:8;background:#101d5bdf;border:1px solid #7a86ff;border-radius:12px;padding:8px 12px;color:#d9eeff;font-size:11px;font-weight:800;box-shadow:0 8px 25px #0004}
-.floating-note strong{display:block;color:#73edff;font-size:15px}
-.book-stack{position:absolute;bottom:22px;left:10px;z-index:5}
-.book{width:78px;height:18px;margin-top:3px;border-radius:4px;padding-left:8px;font-size:10px;font-weight:900;color:white;box-shadow:0 4px 5px #0003}
-.book:nth-child(1){background:#13b9ff}.book:nth-child(2){background:#8a47ff}.book:nth-child(3){background:#08bd9d}
-.plant{position:absolute;bottom:53px;right:6px;font-size:35px;z-index:3}
-
-/* FEATURES */
-.section{padding:70px 0}
-.section-heading{text-align:center;margin-bottom:34px}
-.mini-title{display:inline-block;color:#087cff;font-size:12px;font-weight:900;letter-spacing:1.5px;margin-bottom:8px}
-.section-heading h2{font-size:clamp(27px,4vw,38px);line-height:1.2}
-.section-heading h2 span{color:#6544ef}
-.section-heading p{color:#63739a;max-width:570px;margin:12px auto 0;font-size:14px}
-.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
-.feature-card{padding:25px 22px;border:1px solid #e0e8ff;border-radius:18px;background:linear-gradient(145deg,#fff,#f6f8ff);box-shadow:0 10px 30px #284b9910;transition:.25s}
-.feature-card:hover{transform:translateY(-5px);border-color:#8b9eff;box-shadow:0 15px 32px #375bba20}
-.feature-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;color:white;font-size:24px;background:linear-gradient(135deg,#087cff,#8540ff);margin-bottom:15px;box-shadow:0 7px 17px #477bff35}
-.feature-card:nth-child(2) .feature-icon{background:linear-gradient(135deg,#8d40ff,#d04dff)}
-.feature-card:nth-child(3) .feature-icon{background:linear-gradient(135deg,#00bca0,#087cff)}
-.feature-card h3{font-size:17px;margin-bottom:7px}
-.feature-card p{font-size:13px;color:#69789c}
-
-/* STEPS */
-.steps{background:linear-gradient(120deg,#081744,#111a60,#341078);color:white}
-.steps .section-heading p{color:#c1d0f7}
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.step-card{padding:24px;border:1px solid #ffffff24;background:#ffffff09;border-radius:17px}
-.step-number{width:43px;height:43px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(135deg,#00caff,#8240ff);font-size:19px;font-weight:900;margin-bottom:14px}
-.step-card h3{font-size:17px;margin-bottom:7px}
-.step-card p{font-size:13px;color:#c0cff2}
-
-/* CTA + FOOTER */
-.cta-wrap{padding:60px 0}
-.cta{position:relative;overflow:hidden;text-align:center;padding:43px 22px;border-radius:25px;color:white;background:radial-gradient(ellipse at 100% 0,#8438ff,transparent 45%),linear-gradient(110deg,#087cff,#252dd2,#411078)}
-.cta h2{font-size:clamp(25px,4vw,36px);margin-bottom:10px}
-.cta p{color:#e0e8ff;margin-bottom:22px;font-size:14px}
-.cta .btn{background:white;color:#2538ad}
-footer{background:#061132;color:#b5c6ed;padding:26px 0;font-size:12px;border-top:1px solid #293d77}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px}
-.footer-links{display:flex;gap:18px;flex-wrap:wrap}
-.footer-links a:hover{color:var(--cyan)}
-
-/* MOBILE */
-@media(max-width:950px){
- .nav-links{gap:12px;font-size:12px}
- .nav-actions .btn{padding:10px 13px;font-size:12px}
- .hero-grid{gap:15px}
- .art-title{font-size:20px}
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 66px 0 72px;
+  background:
+    radial-gradient(ellipse at 10% 10%, #dff9eb 0, transparent 38%),
+    radial-gradient(ellipse at 90% 12%, #e9e5ff 0, transparent 36%),
+    radial-gradient(ellipse at 80% 90%, #dcecff 0, transparent 35%),
+    #fbfdff;
 }
-@media(max-width:720px){
- nav{min-height:70px;flex-wrap:wrap;padding:10px 0}
- .logo{width:39px;height:39px;font-size:26px}
- .brand-name{font-size:21px}
- .menu-toggle{display:block;margin-left:auto}
- .nav-links{display:none;order:4;width:100%;flex-direction:column;align-items:stretch;gap:0}
- .nav-links.open{display:flex}
- .nav-links a{padding:11px 4px;border-bottom:1px solid #ffffff19;font-size:14px}
- .nav-actions{order:5;width:100%;padding-bottom:7px}
- .nav-actions .btn{flex:1;font-size:13px}
- .hero-grid{grid-template-columns:1fr;padding:43px 0 35px;gap:10px}
- h1{font-size:clamp(42px,10vw,62px);letter-spacing:-1.5px}
- .hero h2{font-size:24px}
- .hero-copy>p{font-size:14px}
- .art-wrap{min-height:350px}
- .art-card{max-width:490px}
- .cartoon{height:245px}
- .feature-grid,.steps-grid{grid-template-columns:1fr}
- .section{padding:53px 0}
- .feature-card{padding:22px}
- .footer-inner{flex-direction:column;text-align:center}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 30px;
 }
-@media(max-width:380px){
- .brand-name{font-size:18px}
- .tagline{font-size:9px}
- .hero-buttons .btn{min-width:125px;padding:12px 16px}
- .trust-row{gap:10px}
- .art-card{padding:14px 12px 0}
- .floating-note{right:3px;padding:6px 8px}
- .book-stack{left:4px}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 30px;
+  background: #e8fbf2;
+  border: 1px solid #cef3e2;
+  color: #16875d;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  text-transform: uppercase;
 }
-@media(prefers-reduced-motion:reduce){
- html{scroll-behavior:auto}
- *,*:before,*:after{transition:none!important}
+
+.hero h1 {
+  font-size: clamp(43px, 5.8vw, 72px);
+  line-height: 1.07;
+  letter-spacing: -2.8px;
+  margin: 23px 0 19px;
+  font-weight: 900;
+}
+
+.hero h1 .free {
+  color: var(--green);
+}
+
+.hero h1 .income {
+  background: linear-gradient(100deg, var(--blue), var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero h1 .future {
+  display: block;
+  font-size: .62em;
+  letter-spacing: -1px;
+  margin-top: 12px;
+  color: #243454;
+}
+
+.hero-description {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.9;
+  max-width: 500px;
+  margin-bottom: 27px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-buttons .btn {
+  padding: 15px 24px;
+}
+
+.trust-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+  font-size: 12px;
+  color: #66728a;
+  font-weight: 600;
+}
+
+.trust-line span::before {
+  content: "✓";
+  color: var(--green);
+  font-weight: 900;
+  margin-right: 6px;
+}
+
+/* CARTOON */
+
+.art-wrap {
+  width: 100%;
+  max-width: 475px;
+  justify-self: end;
+  position: relative;
+}
+
+.art-glow {
+  position: absolute;
+  width: 80%;
+  height: 70%;
+  left: 10%;
+  top: 14%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b6f5d8, #c7d8ff, #dfc6ff);
+  filter: blur(45px);
+  opacity: .65;
+}
+
+.cartoon {
+  width: 100%;
+  display: block;
+  position: relative;
+  filter: drop-shadow(0 18px 22px #596d9a16);
+}
+
+/* SECTION */
+
+.section {
+  padding: 76px 0;
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 38px;
+}
+
+.section-heading .eyebrow {
+  color: var(--purple);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.2;
+  margin: 12px 0;
+  letter-spacing: -1px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.feature-card {
+  padding: 28px 24px;
+  border-radius: 22px;
+  border: 1px solid #edf0f7;
+  background: white;
+  box-shadow: 0 10px 32px #1d315308;
+  transition: .25s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px #435a9012;
+}
+
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 53px;
+  height: 53px;
+  border-radius: 16px;
+  font-size: 25px;
+  margin-bottom: 18px;
+}
+
+.green-icon { background: #e5fbf0; }
+.blue-icon { background: #e9efff; }
+.purple-icon { background: #f0e8ff; }
+
+.feature-card h3 {
+  font-size: 19px;
+  margin-bottom: 9px;
+}
+
+.feature-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* CALL TO ACTION */
+
+.cta {
+  padding: 0 0 75px;
+}
+
+.cta-panel {
+  border-radius: 28px;
+  padding: 48px 28px;
+  text-align: center;
+  background: linear-gradient(120deg, #e3fff0, #e9edff, #f0e6ff);
+  border: 1px solid #e9eafa;
+}
+
+.cta-panel h2 {
+  font-size: clamp(27px, 4vw, 39px);
+  line-height: 1.2;
+  margin-bottom: 13px;
+}
+
+.cta-panel p {
+  max-width: 560px;
+  margin: 0 auto 24px;
+  color: #606d84;
+  font-size: 15px;
+}
+
+/* FOOTER */
+
+footer {
+  background: #f8faff;
+  border-top: 1px solid #edf0f7;
+  padding: 30px 0;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.footer-copy {
+  color: #758097;
+  font-size: 13px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #56617a;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 4%;
+    right: 4%;
+    background: white;
+    padding: 20px;
+    border: 1px solid #edf0f7;
+    border-radius: 17px;
+    box-shadow: 0 15px 35px #24345412;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 17px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .navbar {
+    min-height: 72px;
+  }
+
+  .hero {
+    padding: 44px 0 54px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons, .trust-line {
+    justify-content: center;
+  }
+
+  .art-wrap {
+    justify-self: center;
+    max-width: 410px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 58px 0;
+  }
+}
+
+@media (max-width: 440px) {
+  .brand {
+    font-size: 21px;
+  }
+
+  .brand-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .nav-actions .btn {
+    padding: 9px 11px;
+    font-size: 12px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1.8px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .trust-line {
+    gap: 10px;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
-  <div class="container">
-    <nav>
-      <a href="#home" class="brand" aria-label="FREE INCOME Home">
-        <div class="logo">F</div>
-        <div>
-          <div class="brand-name">FREE <span>INCOME</span></div>
-          <div class="tagline">Your Future Starts Here</div>
-        </div>
-      </a>
+  <div class="container navbar">
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <a href="index.html" class="brand" aria-label="FREE INCOME home">
+      <span class="brand-icon">✦</span>
+      <span class="brand-name">
+        <span>FREE</span> <span>INCOME</span>
+      </span>
+    </a>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#opportunities">Opportunities</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <div class="nav-actions">
-        <a href="login.html" class="btn outline">Login</a>
-        <a href="register.html" class="btn primary">Register ↗</a>
-      </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#features">Explore</a>
+      <a href="#about">About</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Create Account</a>
     </nav>
+
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-outline">Login</a>
+      <a href="register.html" class="btn btn-primary">Get Started</a>
+      <button class="menu-btn" id="menuBtn"
+              aria-label="Open navigation menu"
+              aria-expanded="false">☰</button>
+    </div>
+
   </div>
 </header>
 
 <main>
+
 <section class="hero" id="home">
   <div class="container hero-grid">
-    <div class="hero-copy">
-      <div class="eyebrow">✦ &nbsp; LEARN · WORK · GROW</div>
-      <h1>FREE <span class="gradient-text">INCOME</span></h1>
-      <h2>Build Your Future Today</h2>
-      <p>Discover opportunities, develop your skills, and take the next step toward your goals. Start learning, explore your options, and grow with FREE INCOME.</p>
+
+    <div class="hero-content">
+      <span class="tag">✦ LEARN · GROW · ACHIEVE</span>
+
+      <h1>
+        <span class="free">FREE</span>
+        <span class="income">INCOME</span>
+        <span class="future">Your Future Starts Here.</span>
+      </h1>
+
+      <p class="hero-description">
+        Discover digital skills, explore learning resources and
+        take your first steps toward new opportunities.
+        Start learning today and build your future with confidence.
+      </p>
 
       <div class="hero-buttons">
-        <a href="register.html" class="btn primary">➜ &nbsp; Get Started</a>
-        <a href="login.html" class="btn outline">♙ &nbsp; Login</a>
+        <a href="register.html" class="btn btn-primary">
+          Get Started Free&nbsp; →
+        </a>
+        <a href="#features" class="btn btn-outline">
+          Explore More&nbsp; ↗
+        </a>
       </div>
 
-      <div class="trust-row">
-        <span><b>✦</b> Skill Development</span>
-        <span><b>✧</b> Job Opportunities</span>
-        <span><b>▣</b> Mobile Friendly</span>
+      <div class="trust-line">
+        <span>Learn new skills</span>
+        <span>Explore opportunities</span>
+        <span>Grow every day</span>
       </div>
     </div>
 
-    <div class="art-wrap" aria-label="Cartoon student working with a laptop">
+    <div class="art-wrap">
       <div class="art-glow"></div>
-      <div class="art-card">
-        <div class="art-top">
-          <span class="art-label">✦ YOUR NEXT CHAPTER</span>
-          <span class="art-pill">DREAM · LEARN · GROW</span>
-        </div>
-        <div class="art-title">Big Dreams Start Small 🚀</div>
-        <div class="art-subtitle">Learn something new every day.</div>
 
-        <div class="cartoon">
-          <span class="spark one">✦</span>
-          <span class="spark two">✧</span>
-          <div class="floating-note">YOUR FUTURE<strong>STARTS HERE ↗</strong></div>
+      <!-- Laptop cartoon illustration -->
+      <svg class="cartoon"
+           viewBox="0 0 440 420"
+           xmlns="http://www.w3.org/2000/svg"
+           role="img"
+           aria-label="Boy learning on a laptop">
 
-          <div class="person">
-            <div class="hair"></div>
-            <div class="face">
-              <div class="ear"></div>
-              <div class="brow"></div>
-              <div class="brow right"></div>
-              <div class="eye"></div>
-              <div class="eye right"></div>
-              <div class="smile"></div>
-            </div>
-            <div class="neck"></div>
-            <div class="body"></div>
-            <div class="arm"></div>
-            <div class="hand"></div>
-          </div>
+        <defs>
+          <linearGradient id="artBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e3fff1"/>
+            <stop offset="52%" stop-color="#e4efff"/>
+            <stop offset="100%" stop-color="#f0e4ff"/>
+          </linearGradient>
 
-          <div class="book-stack">
-            <div class="book">LEARN</div>
-            <div class="book">CREATE</div>
-            <div class="book">GROW</div>
-          </div>
-          <div class="plant">🪴</div>
-
-          <div class="laptop">
-            <div class="screen">
-              <div class="screen-logo">F</div>
-              <small>FREE INCOME</small>
-            </div>
-            <div class="base"></div>
-          </div>
-          <div class="desk"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="about">
-  <div class="container">
-    <div class="section-heading">
-      <div class="mini-title">WELCOME TO FREE INCOME</div>
-      <h2>A Smarter Way to <span>Move Forward</span></h2>
-      <p>Explore useful resources, develop your skills, and discover ways to work toward your goals.</p>
-    </div>
-
-    <div class="feature-grid" id="features">
-      <article class="feature-card">
-        <div class="feature-icon">🎓</div>
-        <h3>Learn New Skills</h3>
-        <p>Build your knowledge and improve your abilities through learning and practice.</p>
-      </article>
-      <article class="feature-card">
-        <div class="feature-icon">💼</div>
-        <h3>Find Opportunities</h3>
-        <p>Explore work, projects, and learning opportunities that match your interests.</p>
-      </article>
-      <article class="feature-card">
-        <div class="feature-icon">📈</div>
-        <h3>Grow Your Career</h3>
-        <p>Take practical steps toward professional development and your long-term goals.</p>
-      </article>
-      <article class="feature-card">
-        <div class="feature-icon">🌐</div>
-        <h3>Easy to Access</h3>
-        <p>Visit the platform on your mobile phone, tablet, or computer.</p>
-      </article>
-      <article class="feature-card">
-        <div class="feature-icon">🔐</div>
-        <h3>Account Access</h3>
-        <p>Sign in to access the pages and features available to your account.</p>
-      </article>
-      <article class="feature-card">
-        <div class="feature-icon">✨</div>
-        <h3>Keep Improving</h3>
-        <p>Learn consistently, build experience, and keep working toward your ambitions.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="section steps" id="opportunities">
-  <div class="container">
-    <div class="section-heading">
-      <div class="mini-title">HOW IT WORKS</div>
-      <h2>Start in Three Simple Steps</h2>
-      <p>Create an account, explore the platform, and take your next step.</p>
-    </div>
-    <div class="steps-grid">
-      <article class="step-card">
-        <div class="step-number">1</div>
-        <h3>Create Your Account</h3>
-        <p>Register with your details to get started on the platform.</p>
-      </article>
-      <article class="step-card">
-        <div class="step-number">2</div>
-        <h3>Explore the Platform</h3>
-        <p>Discover the resources, features, and opportunities available.</p>
-      </article>
-      <article class="step-card">
-        <div class="step-number">3</div>
-        <h3>Build Your Skills</h3>
-        <p>Keep learning and take practical steps toward your goals.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="cta-wrap" id="contact">
-  <div class="container">
-    <div class="cta">
-      <h2>Your Future Starts Here ✨</h2>
-      <p>Take the first step and explore what FREE INCOME has to offer.</p>
-      <a href="register.html" class="btn">Create Your Account &nbsp; →</a>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container footer-inner">
-    <div>© <span id="year"></span> FREE INCOME. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="login.html">Login</a>
-      <a href="register.html">Register</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-menuToggle.addEventListener("click", function () {
-  const isOpen = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.textContent = isOpen ? "✕" : "☰";
-});
-
-navLinks.querySelectorAll("a").forEach(function (link) {
-  link.addEventListener("click", function () {
-    navLinks.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.textContent = "☰";
-  });
-});
-
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
+          <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#8b5cf
